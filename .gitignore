@@ -1,0 +1,4 @@
+.project
+.settings
+src/resources/sass/.sass-cache
+src/build
