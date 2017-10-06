@@ -32,7 +32,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "goDrive360": "app"
+  "app.view.user.UserPanel": "app/view/user/UserPanel.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -668,7 +668,15 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "goDrive360.view.Main": []
+  "app.controller.Options": [],
+  "app.model.LocalData": [],
+  "app.view.Main": [],
+  "app.view.common.ImageButton": [],
+  "app.view.options.MenuUsuario": [],
+  "app.view.user.LoginPanel": [],
+  "app.view.user.PanelOpciones": [],
+  "app.view.user.PanelSuperior": [],
+  "app.view.user.UserPanel": []
 });
 
 Ext.ClassManager.addNameAliasMappings({
@@ -1397,8 +1405,34 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
-  "goDrive360.view.Main": [
-    "widget.main"
+  "app.controller.Options": [],
+  "app.model.LocalData": [],
+  "app.view.Main": [
+    "widget.mainView"
+  ],
+  "app.view.common.ImageButton": [
+    "image-button",
+    "widget.image-button"
+  ],
+  "app.view.options.MenuUsuario": [
+    "opciones-menu-usuario",
+    "widget.opciones-menu-usuario"
+  ],
+  "app.view.user.LoginPanel": [
+    "login-panel",
+    "widget.login-panel"
+  ],
+  "app.view.user.PanelOpciones": [
+    "panel-opciones-usuario",
+    "widget.panel-opciones-usuario"
+  ],
+  "app.view.user.PanelSuperior": [
+    "panel-superior-opciones-usuario",
+    "widget.panel-superior-opciones-usuario"
+  ],
+  "app.view.user.UserPanel": [
+    "user-panel",
+    "widget.user-panel"
   ]
 });
 

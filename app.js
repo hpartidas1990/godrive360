@@ -11,51 +11,176 @@
 */
 
 Ext.application({
-    name: 'goDrive360',
+    name: 'app',
 
     requires: [
-        'Ext.MessageBox'
+    	'app.model.LocalData',
+    	'Ext.data.Store',
+        'Ext.data.proxy.LocalStorage',
+        'app.view.user.LoginPanel',
+        'app.view.Main'
     ],
 
-    views: [
-        'Main'
+    controllers: [
+    	'app.controller.User',
+    	'app.controller.Options'
     ],
-
-    icon: {
-        '57': 'resources/icons/Icon.png',
-        '72': 'resources/icons/Icon~ipad.png',
-        '114': 'resources/icons/Icon@2x.png',
-        '144': 'resources/icons/Icon~ipad@2x.png'
-    },
-
-    isIconPrecomposed: true,
-
-    startupImage: {
-        '320x460': 'resources/startup/320x460.jpg',
-        '640x920': 'resources/startup/640x920.png',
-        '768x1004': 'resources/startup/768x1004.png',
-        '748x1024': 'resources/startup/748x1024.png',
-        '1536x2008': 'resources/startup/1536x2008.png',
-        '1496x2048': 'resources/startup/1496x2048.png'
-    },
+    
+    views: ['Main'],
+    
+    /**
+     * Prepara los componentes de la aplicación
+     *
+     * @method init
+     */
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
+    	var me = this;
+    	window.App = me;
         Ext.fly('appLoadingIndicator').destroy();
+        
+        document.addEventListener("deviceready", SUtils.apply(App.onDeviceReady, App), false);
+        
+        var device = JSON.parse(App.extFn().getDeviceUuid());
 
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('goDrive360.view.Main'));
+        if (!window.cordova || (device && device.deviceType && device.deviceType == "Desktop")) { // Esta condición debe ser activada si no se usa la herramienta emuladora de chrome
+            SUtils.log("Forcing OnReady Event");
+            App.onDeviceReady();
+        }
+        
+        //Ext.Viewport.add(Ext.create('app.view.Main'));
     },
 
-    onUpdated: function() {
-        Ext.Msg.confirm(
-            "Application Update",
-            "This application has just successfully been updated to the latest version. Reload now?",
-            function(buttonId) {
-                if (buttonId === 'yes') {
-                    window.location.reload();
-                }
+    init: function() {
+        var me = this;
+        var LoginIsReady = null;
+
+        SUtils.log("app init");
+
+        App.extFn().setAppName(App.name);
+        App.extFn().setDefaultLocalModel(Config.LOCALDATA_MODEL_NAME);
+
+        LoginIsReady = App.extFn().getLocalData('UserData');
+        me.initialConnectionSettings(LoginIsReady);
+
+        if (!LoginIsReady) {
+        	Ext.Viewport.add(Ext.create('login-panel'));
+        }else {
+            me.showMainView();
+        }
+    },
+    
+    /**
+     * Este método depende del evento onDeviceReady que se ejecuta al cargar Cordova totalmente.
+     *
+     * @method onDeviceReady
+     */
+    onDeviceReady: function(e) {
+        var me = this;
+
+        if (!me._onDeviceReady) {
+            SUtils.log("onDeviceReady");
+            document.addEventListener("backbutton", SUtils.apply(me.backButton, me), false);
+            document.addEventListener("menubutton", SUtils.apply(me.menubutton, me), false);
+            document.addEventListener("online", SUtils.apply(me.online, me), false);
+            document.addEventListener("offline", SUtils.apply(me.offline, me), false);
+            me.init();
+            me._onDeviceReady = true;
+        }
+    },
+
+    /**
+     * Acción ejecutada cuando se presiona el botón back del dispositivo.
+     *
+     * @method  backButton
+     */
+    backButton: function(e, flag) {
+        SUtils.log("backbutton");
+    },
+
+    /**
+     * Acción ejecutada cuando se presiona el botón de menu del dispositivo
+     *
+     * @method  menubutton
+     */
+    menubutton: function() {
+        SUtils.log('menubutton');
+    },
+    
+    /**
+     * Esta funcionalidad se ejcuta cuando el dispositivo no obtiene conexión de red
+     *
+     * @method offline
+     */
+    offline: function() {
+        console.log('offline');
+    },
+
+    /**
+     * Esta funcionalidad se ejcuta cuando el dispositivo obtiene conexión de red
+     *
+     * @method online
+     */
+    online: function() {
+        console.log('online');
+    },
+    /**
+     * Ejecuta acciones que requieran conexión de datos al inciar la app.
+     *
+     * @method initialConnectionSettings
+     * @param {boolean} LoginIsReady indica si ya se ha hecho login en la aplicación
+     */
+    initialConnectionSettings: function(LoginIsReady) {
+        var me = this;
+
+        SUtils.log('initial_connection_settings');
+
+        if (App.extFn().checkConnection()) {
+
+            if (LoginIsReady) {
+                me.registrarPush();
             }
-        );
-    }
+        } else {
+            App.offline();
+        }
+
+    },
+
+    /**
+     * Muestra la vista principal de la aplicación.
+     *
+     * @method showMainView
+     */
+    showMainView: function() {
+        var main = Ext.create('widget.mainView');
+
+        if (Ext.Viewport.getActiveItem()) {
+            Ext.Viewport.removeAll();
+        }
+
+        Ext.Viewport.add(main);
+    },
+    
+    /**
+     * Encapsula una referencia a la librería SUtils4Sencha indicando el nombre de la aplicación
+     * y el nombre del modelo a usar para almacenar los datos locales.
+     *
+     * Toda llamada a la librería SUtils4Sencha debe hacerse a través de este método. Por ejemplo:
+     *
+     * 		var  localData = App.extFn().getLocalData();
+     *
+     * Otro ejemplo sería el siguiente:
+     *
+     *  	if( App.extFn().checkConnection() ){
+     *  		//acciónes cuando hay conexión
+     *  	}else{
+     *  		//acciónes cuando no hay conexión
+     *  	}
+     *
+     * @method extFn
+     * @return {SUtils4Sencha}
+     */
+    extFn: function() {
+        return SUtils4Sencha;
+    },
 });

@@ -1,50 +1,96 @@
-Ext.define('goDrive360.view.Main', {
-    extend: 'Ext.tab.Panel',
-    xtype: 'main',
+/**
+ * Vista principal de la aplicación
+ * 
+ * @class app.view.Main
+ * @module view 
+ * @since 10/05/2017
+ */
+Ext.define("app.view.Main", {
+
+    xtype: 'mainView',
+
+    extend: 'Ext.navigation.View',
+
     requires: [
-        'Ext.TitleBar',
-        'Ext.Video'
+    	'app.view.common.ImageButton'
     ],
+
     config: {
-        tabBarPosition: 'bottom',
-
-        items: [
-            {
-                title: 'Welcome',
-                iconCls: 'home',
-
-                styleHtmlContent: true,
-                scrollable: true,
-
-                items: {
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'Welcome to Sencha Touch 2'
-                },
-
-                html: [
-                    "You've just generated a new Sencha Touch 2 project. What you're looking at right now is the ",
-                    "contents of <a target='_blank' href=\"app/view/Main.js\">app/view/Main.js</a> - edit that file ",
-                    "and refresh to change what's rendered here."
-                ].join("")
-            },
-            {
-                title: 'Get Started',
-                iconCls: 'action',
-
-                items: [
-                    {
-                        docked: 'top',
-                        xtype: 'titlebar',
-                        title: 'Getting Started'
-                    },
-                    {
-                        xtype: 'video',
-                        url: 'http://av.vimeo.com/64284/137/87347327.mp4?token=1330978144_f9b698fea38cd408d52a2393240c896c',
-                        posterUrl: 'http://b.vimeocdn.com/ts/261/062/261062119_640.jpg'
-                    }
-                ]
+        id: 'main',
+        autoDestroy: true,
+        layout: {
+            type: 'card',
+            animation: null
+        },
+        navigationBar: {
+            ui: 'light',
+            docked: 'top',
+            style: 'font-size: .7em;',
+            defaults: {
+                style: 'color: #FFFFFF;',
+                ui: 'plain',
+                align: 'left'
             }
-        ]
+        }
+    },
+
+    /**
+     * 
+     * @method   initialize
+     */
+    initialize: function() {
+        var me = this;
+
+        if (!App.extFn().checkConnection()) {
+            App.offline();
+        }
+
+        me.callParent(arguments);
+        me.setDefaultBackButtonText("");
+
+        me.getNavigationBar().setBackButton({
+            ui: 'plain',
+            iconCls: 'back',
+            style: 'font-size: 1.5em;'
+        });
+
+        me.getNavigationBar().add(Ext.create("widget.image-button", {
+            id: 'logoBtn',
+            align: 'left',
+            height: '90%',
+            image: 'resources/images/logo64.png',
+            imageStyle: 'height: 3em; margin: 5px 5px 5px 5px;'
+        }));
+
+        me.on("push", function() {
+/*            me.validateBackButton();
+            var ctrl = App.getController("Options");
+            if (ctrl._menu && !ctrl._menu.isHidden()) {
+                Ext.Viewport.hideMenu('left');
+            }*/
+        });
+
+        me.addListener("pop", function(componente, view, eOpts) {
+            SUtils.toggleOptionLayerBtn("back");
+            me.validateBackButton();
+        });
+
+    },
+
+    /**
+     * Valida si se muestra o no el botón volver o el logo.
+     * Si esta activa la ventana para reportar muestra el icono de reportar sino lo oculta.
+     *
+     * @method validateBackButton
+     */
+    validateBackButton: function() {
+        var me = this;
+        var itemsCount = me.getInnerItems().length;
+        var logoBtn = Ext.getCmp("logoBtn");
+        var btnAbrirNotific = Ext.getCmp("btnAbrirNotific");
+
+        logoBtn && logoBtn.setHidden(itemsCount > 1 ? true : false);
+        btnAbrirNotific && btnAbrirNotific.setHidden(itemsCount > 1 ? true : false);
     }
+
 });

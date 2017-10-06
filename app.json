@@ -61,6 +61,24 @@
             "path": "app.js",
             "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
             "update": "delta"
+        },
+        /*{
+			"path": "cordova.js"
+		},*/
+		{
+            "path": "config/Config.js"
+        },
+        {
+            "path": "lib/SUtils.js"
+        },
+        {
+			"path": "lib/SUtils4Sencha.js"
+		},
+        {
+            "path": "lib/leaflet.js"
+        },
+        {
+            "path": "lib/moment-with-locales.js"
         }
     ],
 

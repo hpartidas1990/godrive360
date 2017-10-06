@@ -1,10 +1,122 @@
 // The following two lines import the default Sencha Touch theme. If you are building
 // a new theme, remove them and the add your own CSS on top of the base CSS (which
 // is already included in your app.json file).
+
+$base-color: #481484;
+
+$include-highlights: true !default;
+ 
+$base-gradient : if($include-highlights, matte, null) !default;
+
+$active-color: #D8DBD5;
+
+$list-pressed-color : #D8DBD5;
+
 @import 'sencha-touch/default';
 @import 'sencha-touch/default/all';
 
-// Custom code goes here..
+.login {
+	/* background-image: url('../images/bg-login.jpg'); */
+	 background-image: url('../images/banner3.jpg');
+	 background-size: cover;
+	 background-repeat: no-repeat;
+	 background-attachment: fixed;
+     background-position: center;
+}
 
-// Examples of using the icon mixin:
-// @include icon('user');
+.login_form {
+	 
+}
+
+.redondito {
+    -webkit-border-radius: 10px;
+}
+
+.sombrita {
+    box-shadow:0px 1px 10px rgba(0,0,0,0.25) ,inset 0px 0px 4px rgba(225,255,255,0.65);
+    -webkit-box-shadow:0px 2px 10px rgba(0,0,0,0.25) ,inset 0px 0px 4px rgba(225,255,255,0.65);
+    moz-box-shadow:0px 1px 10px rgba(0,0,0,0.25) ,inset 0px 0px 4px rgba(225,255,255,0.65);
+}
+
+.grisecito {
+	background-color: #f3edfb;
+}
+
+.transparent {
+	opacity: 0.9;
+}
+
+.solid {
+	opacity: 1;
+}
+
+.redondito {
+	-webkit-border-radius: 4px;
+}
+
+.button_1 {
+	background-color: $base-color;
+	background-image: none !important;
+	color: #fff;
+	opacity: 1;
+	-webkit-border-radius: 4px;
+	height: 48px;
+}
+
+/** Navigation Bar **/
+
+.x-toolbar-light {
+	background-image: none !important;
+}
+
+/** Menu **/
+
+
+.panel-opciones-usuario .x-button-label{
+	color: #ffffff; 
+	text-align: justify;
+	font-size: 14pt;
+}
+
+.panel-superior{	 
+	 background: $base-color;
+	 padding: 5% 5%;
+	 -webkit-box-shadow: 0px 4px 2px #c2c2c2;
+	 height: 20%;
+	 max-height: 215px;
+}
+
+.text-panel-superior{
+	color: #fff;
+}
+
+.menu-button {
+	background: none;
+	border-bottom: 1px solid #c5c5c5;
+	color: $base-color;
+	height: 2.5em;
+	margin: .7em 0 0 0 !important;
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 0px;
+	border-radius: 0 !important;
+	text-align: left !important;
+}
+
+.menu-button .x-button-label {
+	text-align: left !important;
+	color: #545454 !important;
+}
+
+.panel-opciones-usuario .x-button-label{
+	color: #3f4040; 
+	text-align: justify;
+	font-size: 14pt;
+	font-weight:bold;
+}
+
+.x-menu {
+	background: #fff;
+	padding: 0;
+	border-right: 2px solid #c2c2c2;
+}
