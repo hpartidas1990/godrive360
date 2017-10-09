@@ -67,7 +67,7 @@ Ext.define("app.view.user.LoginPanel", {
                     		style: 'width: 94%; margin: 0 auto; padding-top: 10%; text-align: center; background: rgba(243, 237, 251, 0.8);',
                     		items: [
                     			{
-                    				html: ['<img src="resources/images/logo_menu_lateral.png" style="width: 88%;" />']
+                    				html: ['<img src="resources/images/logo_godrive360.png" style="width: 88%;" />']
                     			},
                                 {
                                     xtype: 'fieldset',
@@ -79,7 +79,7 @@ Ext.define("app.view.user.LoginPanel", {
                                 {
                                 	xtype: 'button',
                                 	text: 'Entrar',
-                                	style: 'margin: 5%; margin-top: 15%; opacity: 1;',
+                                	style: 'margin: 5%; margin-top: 15%;',
                                 	id: 'loginBtn',
                                 	cls: 'button_1'
                                 		

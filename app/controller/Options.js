@@ -7,6 +7,8 @@ Ext.define('app.controller.Options', {
 	
 	requires: [
 		'app.view.options.MenuUsuario',
+		'app.view.options.AboutPanel',
+		'app.view.pupils.Panel'
 	],
 	
 	config: {
@@ -14,13 +16,31 @@ Ext.define('app.controller.Options', {
 		refs: {
 			mainView: '#main',
             logoBtn: '#logoBtn',
+            btnAbout: 'panel-opciones-usuario #btnAcercaDe',
+            btnPupils: 'panel-opciones-usuario #btnAlumnos'
 		},
 		
 		control: {
 			logoBtn: {
                 tap: 'showMenuUsuario'
+            },
+            
+            btnAbout : {
+            	tap: 'onBtnAboutTap'
+            },
+            
+            btnPupils : {
+            	tap : 'onBtnPupils'
             }
 		}
+	},
+	
+	onBtnAboutTap : function(){
+		this.openPanelMethod("about-panel", "Acerca de...");
+	},
+	
+	onBtnPupils : function(){
+		this.openPanelMethod("pupils-panel", "Mis Alumnos");
 	},
 	
 	/**
@@ -50,14 +70,14 @@ Ext.define('app.controller.Options', {
             });
         }
 
-        me.hiddenShowMenuUsuario();
+        me.hideShowMenuUsuario();
     },
     /**
      * Oculta el menú con las opciones del usuario.
      * 
-     * @method hiddenShowMenuUsuario
+     * @method hideShowMenuUsuario
      */
-    hiddenShowMenuUsuario: function() {
+    hideShowMenuUsuario: function() {
 
         var me = this;
         if (me._menu) {
@@ -74,25 +94,23 @@ Ext.define('app.controller.Options', {
      */
     openPanelMethod: function(panel, title) {
 
-        SUtils.toggleOptionLayerBtn(panel);
-
         var me = this;
         var main = me.getMainView();
         var panel = Ext.create(panel, {
-            title: App.extFn().t(title)
+            title: title
         });
 
         main.setMasked({
             xtype: 'loadmask',
-            message: App.extFn().t("cargando")
+            message: Config.LOADING_TEXT
         });
 
-        me.hiddenShowMenuUsuario();
+        me.hideShowMenuUsuario();
 
         window.setTimeout(function() {
             main.push(panel);
             main.setMasked(false);
-        }, 500);
+        }, 300);
     }
 	
 });

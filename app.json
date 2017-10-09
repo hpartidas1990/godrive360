@@ -112,9 +112,7 @@
         /**
          * List of items in the CACHE MANIFEST section
          */
-        "cache": [
-            "index.html"
-        ],
+        "cache": [],
         /**
          * List of items in the NETWORK section
          */
@@ -171,7 +169,7 @@
      *   }
      */
     "cache": {
-        "enable": true,
+        "enable": false,
         "deltas": "deltas"
     },
 

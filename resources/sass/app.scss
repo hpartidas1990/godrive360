@@ -16,8 +16,7 @@ $list-pressed-color : #D8DBD5;
 @import 'sencha-touch/default/all';
 
 .login {
-	/* background-image: url('../images/bg-login.jpg'); */
-	 background-image: url('../images/banner3.jpg');
+	 background-image: url('../images/bg-login.jpg');
 	 background-size: cover;
 	 background-repeat: no-repeat;
 	 background-attachment: fixed;
@@ -42,6 +41,10 @@ $list-pressed-color : #D8DBD5;
 	background-color: #f3edfb;
 }
 
+.fondito {
+	background-color: #ebedf3;
+}
+
 .transparent {
 	opacity: 0.9;
 }
@@ -63,6 +66,12 @@ $list-pressed-color : #D8DBD5;
 	height: 48px;
 }
 
+/*** patches ***/
+
+.x-tab .x-button-icon.car:before, .x-button .x-button-icon.car:before {
+	left: -6px !important;
+}
+
 /** Navigation Bar **/
 
 .x-toolbar-light {
@@ -70,7 +79,6 @@ $list-pressed-color : #D8DBD5;
 }
 
 /** Menu **/
-
 
 .panel-opciones-usuario .x-button-label{
 	color: #ffffff; 
@@ -93,7 +101,7 @@ $list-pressed-color : #D8DBD5;
 .menu-button {
 	background: none;
 	border-bottom: 1px solid #c5c5c5;
-	color: $base-color;
+	color: #545454;
 	height: 2.5em;
 	margin: .7em 0 0 0 !important;
 	border-left: 0px;
@@ -101,11 +109,13 @@ $list-pressed-color : #D8DBD5;
 	border-top: 0px;
 	border-radius: 0 !important;
 	text-align: left !important;
+	padding-bottom: 16%;
 }
 
 .menu-button .x-button-label {
 	text-align: left !important;
 	color: #545454 !important;
+	padding-top: 2%;
 }
 
 .panel-opciones-usuario .x-button-label{
@@ -120,3 +130,73 @@ $list-pressed-color : #D8DBD5;
 	padding: 0;
 	border-right: 2px solid #c2c2c2;
 }
+
+/**** Mask ****/
+
+.x-mask .x-mask-message {
+	color: #fff !important;
+}
+
+.x-mask .x-mask-inner {
+	background: rgba(0, 0, 0, 0.45);
+}
+
+/**** Icons ****/
+
+@include icon-font('godrive', inline-font-files('godrive/godrive.woff', woff, 'godrive/godrive.ttf', truetype,'godrive/godrive.svg', svg));
+
+[class^="icon-godrive"], [class*=" icon-godrive"] {
+	font-family: 'godrive';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[data-icon-godrive]:before {
+	font-family: godrive;
+	content: attr(data-icon-godrive);
+	speak: none;
+}
+
+@include icon('car', 'a', 'godrive');
+@include icon('info', 's', 'godrive');
+@include icon('logout', 'j', 'godrive');
+@include icon('share', 'o', 'godrive');
+@include icon('back', 'n', 'godrive');
+@include icon('new-error', 'k', 'godrive');
+@include icon('stop2', 'x', 'godrive');
+@include icon('pupils', 'z', 'godrive');
+
+/**** General ****/
+
+.inline-icon {
+	vertical-align: text-top;
+}
+
+.info-note {
+	width: 285px;
+	padding: 21px 42px;
+	margin: 24px auto;
+	background: #ae0653;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.label-text {
+	color: #413c5f;
+}
+
+.bottom-shadow {
+	-webkit-box-shadow: 0 10px 6px -6px #777;
+	-moz-box-shadow: 0 10px 6px -6px #777;
+	box-shadow: 0 10px 6px -6px #777;
+}
+
+
+

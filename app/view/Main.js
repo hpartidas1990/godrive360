@@ -12,15 +12,16 @@ Ext.define("app.view.Main", {
     extend: 'Ext.navigation.View',
 
     requires: [
-    	'app.view.common.ImageButton'
+    	'app.view.common.ImageButton',
+    	'app.view.course.Panel'
     ],
 
     config: {
         id: 'main',
         autoDestroy: true,
         layout: {
-            type: 'card',
-            animation: null
+            type: 'card'
+            //animation: null
         },
         navigationBar: {
             ui: 'light',
@@ -63,18 +64,18 @@ Ext.define("app.view.Main", {
         }));
 
         me.on("push", function() {
-/*            me.validateBackButton();
+            me.validateBackButton();
             var ctrl = App.getController("Options");
             if (ctrl._menu && !ctrl._menu.isHidden()) {
                 Ext.Viewport.hideMenu('left');
-            }*/
+            }
         });
 
         me.addListener("pop", function(componente, view, eOpts) {
-            SUtils.toggleOptionLayerBtn("back");
             me.validateBackButton();
         });
 
+        me.add(Ext.create('course-panel', { title: 'Recorrido' }));
     },
 
     /**
@@ -84,13 +85,12 @@ Ext.define("app.view.Main", {
      * @method validateBackButton
      */
     validateBackButton: function() {
+    	
         var me = this;
         var itemsCount = me.getInnerItems().length;
         var logoBtn = Ext.getCmp("logoBtn");
-        var btnAbrirNotific = Ext.getCmp("btnAbrirNotific");
-
+        
         logoBtn && logoBtn.setHidden(itemsCount > 1 ? true : false);
-        btnAbrirNotific && btnAbrirNotific.setHidden(itemsCount > 1 ? true : false);
     }
 
 });

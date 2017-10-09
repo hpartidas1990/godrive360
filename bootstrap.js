@@ -9,6 +9,7 @@
  * metadata-driven class system features
  */
 Ext.Loader.addClassPathMappings({
+  "Contact": "app/view/pupils/Panel.js",
   "Ext": "touch/src",
   "Ext-more": "touch/src/core/Ext-more.js",
   "Ext.Boot": ".sencha/app/Boot.js",
@@ -36,6 +37,7 @@ Ext.Loader.addClassPathMappings({
 });
 
 Ext.ClassManager.addNameAlternateMappings({
+  "Contact": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -668,11 +670,18 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "app.controller.Course": [],
   "app.controller.Options": [],
+  "app.controller.Pupils": [],
+  "app.controller.User": [],
   "app.model.LocalData": [],
   "app.view.Main": [],
   "app.view.common.ImageButton": [],
+  "app.view.course.Panel": [],
+  "app.view.course.recorderView": [],
+  "app.view.options.AboutPanel": [],
   "app.view.options.MenuUsuario": [],
+  "app.view.pupils.Panel": [],
   "app.view.user.LoginPanel": [],
   "app.view.user.PanelOpciones": [],
   "app.view.user.PanelSuperior": [],
@@ -680,6 +689,7 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 
 Ext.ClassManager.addNameAliasMappings({
+  "Contact": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -1405,7 +1415,10 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "app.controller.Course": [],
   "app.controller.Options": [],
+  "app.controller.Pupils": [],
+  "app.controller.User": [],
   "app.model.LocalData": [],
   "app.view.Main": [
     "widget.mainView"
@@ -1414,9 +1427,25 @@ Ext.ClassManager.addNameAliasMappings({
     "image-button",
     "widget.image-button"
   ],
+  "app.view.course.Panel": [
+    "course-panel",
+    "widget.course-panel"
+  ],
+  "app.view.course.recorderView": [
+    "recorder-view-panel",
+    "widget.recorder-view-panel"
+  ],
+  "app.view.options.AboutPanel": [
+    "about-panel",
+    "widget.about-panel"
+  ],
   "app.view.options.MenuUsuario": [
     "opciones-menu-usuario",
     "widget.opciones-menu-usuario"
+  ],
+  "app.view.pupils.Panel": [
+    "pupils-panel",
+    "widget.pupils-panel"
   ],
   "app.view.user.LoginPanel": [
     "login-panel",

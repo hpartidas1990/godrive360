@@ -30,14 +30,20 @@ Ext.define('app.view.options.MenuUsuario', {
 	},
 	initialize: function() {
 		var me = this;
-		me.add(Ext.create('Ext.Container', {
-			items: [
-				Ext.create("widget.panel-superior-opciones-usuario"),
-				Ext.create("widget.panel-opciones-usuario", {
-					scrollable: null,
-					minHeight: '400px'
-				})
-			]
-		}));
+			me.add(Ext.create('Ext.Container', {
+				items: [
+					Ext.create("widget.panel-superior-opciones-usuario"),
+					Ext.create("widget.panel-opciones-usuario", {
+						scrollable: null,
+						minHeight: '400px'
+					}),
+					{
+			            xtype: 'panel',
+			            flex: 2,
+			            html: '<div style="text-align: center;"><img src="resources/images/logo_godrive360.png" style="width: 88%;" /></div>',
+			            //style: 'background-color: #759E60;'
+			        }
+				]
+			}));
 	}
 });

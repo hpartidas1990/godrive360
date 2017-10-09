@@ -14,6 +14,7 @@ Ext.application({
     name: 'app',
 
     requires: [
+    	'Ext.data.identifier.Uuid',
     	'app.model.LocalData',
     	'Ext.data.Store',
         'Ext.data.proxy.LocalStorage',
@@ -23,7 +24,9 @@ Ext.application({
 
     controllers: [
     	'app.controller.User',
-    	'app.controller.Options'
+    	'app.controller.Options',
+    	'app.controller.Course',
+    	'app.controller.Pupils'
     ],
     
     views: ['Main'],
@@ -64,7 +67,8 @@ Ext.application({
         me.initialConnectionSettings(LoginIsReady);
 
         if (!LoginIsReady) {
-        	Ext.Viewport.add(Ext.create('login-panel'));
+        	//Ext.Viewport.add(Ext.create('login-panel'));
+        	me.showMainView();
         }else {
             me.showMainView();
         }

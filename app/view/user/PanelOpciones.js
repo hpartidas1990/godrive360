@@ -15,7 +15,6 @@ Ext.define("app.view.user.PanelOpciones", {
 		'Ext.List'
 	],
 	config: {
-		//cls: 'panel-opciones-usuario',
 		layout: {
 			type: 'vbox',
 			align: 'center'
@@ -49,23 +48,23 @@ Ext.define("app.view.user.PanelOpciones", {
 		return [
 			// Add new options here...
 			{
-			    text: '<span>Ayuda</span>',
-			    iconCls: 'ayuda',
-				id: 'btnAyuda'
+			    text: '<span>Mis Alumnos</span>',
+			    iconCls: 'pupils',
+				id: 'btnAlumnos'
 			},
 			{
 			    text: '<span>Acerca de...</span>',
-			    iconCls: 'acercade',
+			    iconCls: 'info',
 				id: 'btnAcercaDe'
 			},
 			{
 			    text: '<span>Compartir</span>',
-			    iconCls: 'compartir',
+			    iconCls: 'share',
 				id: 'btnShare'
 			},
 			{
 			    text: '<span>Cerrar Sesión</span>',
-			    iconCls: 'salir',
+			    iconCls: 'logout',
 				id: 'btnLogout'
 			}
 		];
