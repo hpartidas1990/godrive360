@@ -1,5 +1,5 @@
 .project
 .settings
 .buildpath
-src/resources/sass/.sass-cache
-src/build
+resources/sass/.sass-cache
+build
