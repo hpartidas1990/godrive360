@@ -67,8 +67,8 @@ Ext.application({
         me.initialConnectionSettings(LoginIsReady);
 
         if (!LoginIsReady) {
-        	//Ext.Viewport.add(Ext.create('login-panel'));
-        	me.showMainView();
+        	Ext.Viewport.add(Ext.create('login-panel'));
+        	//me.showMainView();
         }else {
             me.showMainView();
         }
