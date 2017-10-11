@@ -48,6 +48,11 @@ Ext.define("app.view.user.PanelOpciones", {
 		return [
 			// Add new options here...
 			{
+			    text: '<span>Sincronizar</span>',
+			    iconCls: 'sync',
+				id: 'btnSync'
+			},
+			{
 			    text: '<span>Mis Alumnos</span>',
 			    iconCls: 'pupils',
 				id: 'btnAlumnos'
@@ -56,11 +61,6 @@ Ext.define("app.view.user.PanelOpciones", {
 			    text: '<span>Acerca de...</span>',
 			    iconCls: 'info',
 				id: 'btnAcercaDe'
-			},
-			{
-			    text: '<span>Compartir</span>',
-			    iconCls: 'share',
-				id: 'btnShare'
 			},
 			{
 			    text: '<span>Cerrar Sesión</span>',

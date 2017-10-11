@@ -16,7 +16,8 @@ Ext.define('app.controller.Course', {
 		refs: {
 			mainView: '#main',
 			recordBtn: '#recordBtn',
-			stopRecordBtn: '#stopRecordBtn'
+			stopRecordBtn: '#stopRecordBtn',
+			errorBtn : '#errorBtn'
 		},
 		
 		control: {
@@ -26,6 +27,10 @@ Ext.define('app.controller.Course', {
 			
 			stopRecordBtn : {
 				tap: 'onStopRecordBtnTap'
+			},
+			
+			errorBtn : {
+				tap: 'onErrorBtnTap'
 			}
 		}
 	},
@@ -69,10 +74,10 @@ Ext.define('app.controller.Course', {
 		var main = me.getMainView();
 		var geo = App.getController("Geolocation");
 		
-			main.setMasked({
+			/*main.setMasked({
 	            xtype: 'loadmask',
 	            message: 'Deteniendo...'
-	        });
+	        });*/
 		
 			App.extFn().confirm("Ha detenido la grabación. ¿Desea guardar el progreso?", function(){
 				
@@ -81,6 +86,11 @@ Ext.define('app.controller.Course', {
 				me._captureActive = false;
 				
 			});
+	},
+	
+	onErrorBtnTap : function(){
+		console.log("Marcar error en el recorrido");
+		App.extFn().alert("Marcar error en el recorrido");
 	}
 	
 	
