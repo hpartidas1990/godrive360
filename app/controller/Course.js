@@ -42,14 +42,7 @@ Ext.define('app.controller.Course', {
 		
 		var me = this;
 		var main = me.getMainView();
-		var onSuccess = function(position) {
-			console.log("success");
-	        console.log(position);
-	    };
-	    var onError = function onError(error) {
-	    	console.log("error");
-	        console.log(error);
-	    };
+		var geo = App.getController("Geolocation");
 			
 			me._captureActive = true;
 			main.setMasked({
@@ -57,15 +50,11 @@ Ext.define('app.controller.Course', {
 	            message: 'Inicializando...'
 	        });
 			
-			if(navigator && navigator.geolocation){
-				me._watcher = navigator.geolocation.watchPosition(onSuccess, onError, { enableHighAccuracy: true, timeout: 30000 });
-			}
+			geo.initPositionCapture();
 		
 			setTimeout(function(){
-				main.push(Ext.create("recorder-view-panel", {
-					title : 'Grabando...'
-				}));
-			}, 1200);
+				App.extFn().startRecording();
+			}, 200);
 			
 			
 	},
@@ -78,6 +67,7 @@ Ext.define('app.controller.Course', {
 		
 		var me = this;
 		var main = me.getMainView();
+		var geo = App.getController("Geolocation");
 		
 			main.setMasked({
 	            xtype: 'loadmask',
@@ -86,10 +76,7 @@ Ext.define('app.controller.Course', {
 		
 			App.extFn().confirm("Ha detenido la grabación. ¿Desea guardar el progreso?", function(){
 				
-				if(me._watcher && navigator && navigator.geolocation){
-					navigator.geolocation.clearWatch(me._watcher);
-					me._watcher = null;
-				}
+				geo.stopPositionCapture();
 				
 				me._captureActive = false;
 				

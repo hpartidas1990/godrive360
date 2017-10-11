@@ -25,6 +25,7 @@ Ext.application({
     controllers: [
     	'app.controller.User',
     	'app.controller.Options',
+    	'app.controller.Geolocation',
     	'app.controller.Course',
     	'app.controller.Pupils'
     ],
@@ -67,8 +68,8 @@ Ext.application({
         me.initialConnectionSettings(LoginIsReady);
 
         if (!LoginIsReady) {
-        	Ext.Viewport.add(Ext.create('login-panel'));
-        	//me.showMainView();
+        	//Ext.Viewport.add(Ext.create('login-panel'));
+        	me.showMainView();
         }else {
             me.showMainView();
         }
@@ -99,6 +100,44 @@ Ext.application({
      * @method  backButton
      */
     backButton: function(e, flag) {
+        
+    	var me = this;
+        var main = Ext.Viewport.getActiveItem();
+
+        if (App.extFn().hasOverlay()) {
+            App.extFn().hideOverlay();
+            return false;
+        } else if (main && main.getXTypes().indexOf("navigationview") != -1) {
+
+            var ctrl = App.getController("Options");
+
+            console.log(main.getActiveItem().getXTypes().indexOf("course-panel"));
+            console.log(me._backCounter);
+            
+            if (ctrl._menu && !ctrl._menu.isHidden()) {
+                Ext.Viewport.hideMenu('left');
+            } else if (main.getActiveItem().getXTypes().indexOf("course-panel") != -1) {
+                if (!me._backCounter) {
+                    me._backCounter = 1;
+                    if (!flag) {
+                        SUtils.showTooltip("Presione nuevamente para salir.", main.getId());
+                    }
+                } else if (navigator.app && navigator.app.exitApp) {
+                    SUtils.log("navigator.app.exitApp");
+                    navigator.app.exitApp();
+                } else if (navigator.device && navigator.device.exitApp) {
+                    SUtils.log("navigator.device.exitApp");
+                    navigator.device.exitApp();
+                } else {
+                    SUtils.log("window.close");
+                    window.close();
+                }
+            } else {
+                main.pop(1);
+            }
+        }
+
+
         SUtils.log("backbutton");
     },
 

@@ -18,7 +18,7 @@ Config = {
      *
      * @property {String} APP_NAME
      */
-    APP_NAME: 'goDrive360',
+    APP_NAME: 'godrive360',
     /**
      * Nombre del modelo donde se almacena la data local.
      *

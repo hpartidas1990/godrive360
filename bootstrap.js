@@ -671,6 +671,7 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "app.controller.Course": [],
+  "app.controller.Geolocation": [],
   "app.controller.Options": [],
   "app.controller.Pupils": [],
   "app.controller.User": [],
@@ -1416,6 +1417,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "app.controller.Course": [],
+  "app.controller.Geolocation": [],
   "app.controller.Options": [],
   "app.controller.Pupils": [],
   "app.controller.User": [],
