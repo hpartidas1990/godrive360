@@ -66,10 +66,23 @@ $list-pressed-color : #D8DBD5;
 	height: 48px;
 }
 
+.button_2 {
+	background-color: #c4342d;
+	background-image: none !important;
+	color: #fff;
+	opacity: 1;
+	-webkit-border-radius: 4px;
+	height: 48px;
+}
+
 /*** patches ***/
 
 .x-tab .x-button-icon.car:before, .x-button .x-button-icon.car:before {
 	left: -6px !important;
+}
+
+.x-toolbar-light .x-title {
+	transform: none !important;
 }
 
 /** Navigation Bar **/
@@ -171,6 +184,9 @@ $list-pressed-color : #D8DBD5;
 @include icon('new-error', 'k', 'godrive');
 @include icon('stop2', 'x', 'godrive');
 @include icon('pupils', 'z', 'godrive');
+@include icon('check', 'B', 'godrive');
+@include icon('cross', 'A', 'godrive');
+@include icon('sync', 'l', 'godrive');
 
 /**** General ****/
 

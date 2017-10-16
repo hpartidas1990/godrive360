@@ -62,6 +62,16 @@ Ext.define("app.view.Main", {
             image: 'resources/images/logo64.png',
             imageStyle: 'height: 3em; margin: 5px 5px 5px 5px;'
         }));
+        
+        me.getNavigationBar().add({
+            id: 'btnSendError',
+            align: 'right',
+            iconCls: 'check',
+            ui: 'plain'
+        });
+        
+        Ext.getCmp("btnSendError").setHidden(true);
+        
 
         me.on("push", function() {
             me.validateBackButton();
@@ -72,6 +82,15 @@ Ext.define("app.view.Main", {
         });
 
         me.addListener("pop", function(componente, view, eOpts) {
+        	
+        	console.log(componente);
+        	console.log(view);
+        	
+        	var btnSendError = Ext.getCmp("btnSendError");
+        	if (btnSendError) {
+        		btnSendError.setHidden(true);
+            }
+        	
             me.validateBackButton();
         });
 

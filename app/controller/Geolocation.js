@@ -21,6 +21,18 @@ Ext.define('app.controller.Geolocation', {
 		}
 	},
 	
+	lastPosition : null,
+	
+	_routeArray : [],
+	
+	getRouteArray : function(){
+		return this._routeArray;
+	},
+	
+	setRouteArray : function(value){
+		this._routeArray = value;
+	},
+	
 	_geolocator : null,
 	
 	initPositionCapture : function(){
@@ -46,22 +58,37 @@ Ext.define('app.controller.Geolocation', {
 	},
 	
 	successAction : function(){
-		
+		var me = this;
 		return function(position) {
-			console.log("success");
-	        console.log(position);
-	        
-	        
+			console.log("Succeded position capture", position.coords);
+	        me.addPointToRouteArray(position.coords);
 	    };
 	    
 	},
 	
 	errorAction : function(){
 	    
-	    var onError = function onError(error) {
-	    	console.log("error");
-	        console.log(error);
+	    return function onError(error) {
+	    	SUtils.log(["Error capturando la posición del dispositivo", error]);
 	    };
+	},
+	
+	addPointToRouteArray : function(point){
+		
+		var me = this;
+		var route = me.getRouteArray();
+			
+			me.lastPosition = {
+	        		accuracy : point.accuracy,
+	        		lat: point.latitude,
+	        		lng: point.longitude,
+	        		time: moment().format()
+	        };
+			
+			route.push(me.lastPosition);
+			me.setRouteArray(route);
+			
+			App.extFn().setLocalData({'current_route_coords' : route});
 	}
 	
 	

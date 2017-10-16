@@ -16,22 +16,11 @@ Ext.define('app.model.LocalData', {
     	identifier: 'uuid',
     	idProperty : 'uniqueid',
     	fields: [
-			{name: 'lastIdentify'},
-			{name: 'lastPosition'},
-    	    {name: 'OAuth'},
-    	    {name: 'OAuth_date'},
+			{name: 'current_route_start_timestamp'},
+			{name: 'current_route'},
+    	    {name: 'current_route_end_timestamp'},
+    	    {name: 'current_route_errors'},
     	    {name: 'Usuario'},
-    	    {name: 'Equipo'},
-    	    {name: 'Lugares'},
-    	    {name: 'vehiculos'},
-    	    {name: 'notificaciones'},
-    	    {name: 'notificaciones_sinleer'},
-    	    {name: 'notificaciones_totalcount'},
-    	    {name: 'equipo_lastupdate'},
-    	    {name: 'showPanel'},
-    	    {name: 'passwordSeguridad'},
-    	    {name: 'Session_uuid'},
-    	    {name: 'LastLogin'},
     	    {name: 'lang'} // idioma
     	    
     	    
@@ -40,7 +29,7 @@ Ext.define('app.model.LocalData', {
         
         proxy: {
             type: 'localstorage',
-            id : 'gtrplusmobile-localstore'//puede cambiar el prefijo app por el de su aplicación
+            id : 'godrive360-localstore'
         }
     }
 });

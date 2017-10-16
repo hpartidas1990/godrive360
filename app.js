@@ -66,7 +66,7 @@ Ext.application({
 
         LoginIsReady = App.extFn().getLocalData('UserData');
         me.initialConnectionSettings(LoginIsReady);
-
+        
         if (!LoginIsReady) {
         	//Ext.Viewport.add(Ext.create('login-panel'));
         	me.showMainView();
@@ -93,7 +93,7 @@ Ext.application({
             me._onDeviceReady = true;
         }
     },
-
+    
     /**
      * Acción ejecutada cuando se presiona el botón back del dispositivo.
      *
@@ -181,7 +181,7 @@ Ext.application({
         if (App.extFn().checkConnection()) {
 
             if (LoginIsReady) {
-                me.registrarPush();
+                
             }
         } else {
             App.offline();
