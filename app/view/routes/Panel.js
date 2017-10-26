@@ -46,7 +46,7 @@ Ext.define("app.view.routes.Panel", {
 	},
 	
 	getTpl : function(){
-		return '<div class="route-item">Ruta {id} del alumno {pupil}</div>';
+		return '<div class="route-item">{route_title}</div>';
 	},
 	
 	getData : function(){
@@ -59,7 +59,7 @@ Ext.define("app.view.routes.Panel", {
 		return Ext.define('Contact', {
 		    extend: 'Ext.data.Model',
 		    config: {
-		        fields: ['id', 'pupil', 'route_coords', 
+		        fields: ['id', 'pupil', 'route_title', 'route_coords', 
 		        		 'route_end_timestamp', 'route_errors', 
 		        		 'route_files', 'route_start_timestamp']
 		    }

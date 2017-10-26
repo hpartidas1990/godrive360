@@ -29,7 +29,6 @@ Ext.define("app.view.pupils.detailPupil", {
 	initialize: function(){
 		var me = this;
 		var data = me.getData();
-			console.log(data);
 			me.callParent(arguments);
 		
 		

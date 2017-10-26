@@ -27,6 +27,7 @@ Ext.application({
     	'app.controller.Options',
     	'app.controller.Geolocation',
     	'app.controller.Course',
+    	'app.controller.Route',
     	'app.controller.Pupils'
     ],
     
@@ -58,11 +59,13 @@ Ext.application({
     init: function() {
         var me = this;
         var LoginIsReady = null;
+        var geo = App.getController("Geolocation");
 
         SUtils.log("app init");
 
         App.extFn().setAppName(App.name);
         App.extFn().setDefaultLocalModel(Config.LOCALDATA_MODEL_NAME);
+        geo.initPositionCapture();
         
         if(! App.extFn().getLocalData('saved_routes')){
         	App.extFn().setLocalData({'saved_routes' : []});
@@ -73,6 +76,10 @@ Ext.application({
 
         LoginIsReady = App.extFn().getLocalData('UserData');
         me.initialConnectionSettings(LoginIsReady);
+        
+        setTimeout(function(){
+        	geo.stopPositionCapture();        	
+        }, 800);
         
         if (!LoginIsReady) {
         	//Ext.Viewport.add(Ext.create('login-panel'));

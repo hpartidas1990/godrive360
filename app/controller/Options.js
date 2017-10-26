@@ -46,7 +46,14 @@ Ext.define('app.controller.Options', {
 	},
 	
 	onBtnRouteTap : function(){
-		this.openPanelMethod("routes-panel", "Rutas");
+		
+		var isNotEmpty = App.extFn().getLocalData("saved_routes");
+		
+		if(isNotEmpty.length > 0){
+			this.openPanelMethod("routes-panel", "Rutas");
+		}else{
+			App.extFn().alert("No hay rutas almacenadas");
+		}
 	},
 	
 	onBtnPupilsTap : function(){

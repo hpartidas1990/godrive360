@@ -319,6 +319,7 @@ Ext.define('app.controller.Course', {
 		var routeObj = {
 				id : current_id,
 				pupil : pupil,
+				route_title: "Ruta " + current_id + " del alumno " + pupil,
 				route_start_timestamp : start,
 				route_end_timestamp : end,
 				route_files  : route_files,
