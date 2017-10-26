@@ -48,9 +48,9 @@ Ext.define("app.view.user.PanelOpciones", {
 		return [
 			// Add new options here...
 			{
-			    text: '<span>Sincronizar</span>',
-			    iconCls: 'sync',
-				id: 'btnSync'
+			    text: '<span>Rutas</span>',
+			    iconCls: 'route',
+				id: 'btnRoute'
 			},
 			{
 			    text: '<span>Mis Alumnos</span>',

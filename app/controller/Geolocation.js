@@ -50,8 +50,8 @@ Ext.define('app.controller.Geolocation', {
 		
 		var me = this;
 		
-		if(me._watcher && navigator && navigator.geolocation){
-			navigator.geolocation.clearWatch(me._watcher);
+		if(me._geolocator && navigator && navigator.geolocation){
+			navigator.geolocation.clearWatch(me._geolocator);
 			me._geolocator = null;
 		}
 		

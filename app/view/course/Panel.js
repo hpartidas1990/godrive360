@@ -44,8 +44,7 @@ Ext.define("app.view.course.Panel", {
 		me.add(button);
 		me.add({
 		    xtype: 'label',
-		    cls: 'label-text',
-		    html: '<div style="text-align: center; font-weight: bold; margin-bottom: 15%;">Iniciar Recorrido</div>'
+		    cls: 'label-text'
 		});
 		me.add(me.getInfoBlock());
 	},

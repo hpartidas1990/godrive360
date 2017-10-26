@@ -83,9 +83,6 @@ Ext.define("app.view.Main", {
 
         me.addListener("pop", function(componente, view, eOpts) {
         	
-        	console.log(componente);
-        	console.log(view);
-        	
         	var btnSendError = Ext.getCmp("btnSendError");
         	if (btnSendError) {
         		btnSendError.setHidden(true);

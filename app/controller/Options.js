@@ -8,7 +8,8 @@ Ext.define('app.controller.Options', {
 	requires: [
 		'app.view.options.MenuUsuario',
 		'app.view.options.AboutPanel',
-		'app.view.pupils.Panel'
+		'app.view.pupils.Panel',
+		'app.view.routes.Panel'
 	],
 	
 	config: {
@@ -16,8 +17,9 @@ Ext.define('app.controller.Options', {
 		refs: {
 			mainView: '#main',
             logoBtn: '#logoBtn',
-            btnAbout: 'panel-opciones-usuario #btnAcercaDe',
-            btnPupils: 'panel-opciones-usuario #btnAlumnos'
+            btnRoute: '#btnRoute',
+            btnPupils: 'panel-opciones-usuario #btnAlumnos',
+            btnAbout: 'panel-opciones-usuario #btnAcercaDe'
 		},
 		
 		control: {
@@ -25,12 +27,16 @@ Ext.define('app.controller.Options', {
                 tap: 'showMenuUsuario'
             },
             
-            btnAbout : {
-            	tap: 'onBtnAboutTap'
+            btnRoute : {
+            	tap : 'onBtnRouteTap'
             },
             
             btnPupils : {
-            	tap : 'onBtnPupils'
+            	tap : 'onBtnPupilsTap'
+            },
+
+            btnAbout : {
+            	tap: 'onBtnAboutTap'
             }
 		}
 	},
@@ -39,7 +45,11 @@ Ext.define('app.controller.Options', {
 		this.openPanelMethod("about-panel", "Acerca de...");
 	},
 	
-	onBtnPupils : function(){
+	onBtnRouteTap : function(){
+		this.openPanelMethod("routes-panel", "Rutas");
+	},
+	
+	onBtnPupilsTap : function(){
 		this.openPanelMethod("pupils-panel", "Mis Alumnos");
 	},
 	

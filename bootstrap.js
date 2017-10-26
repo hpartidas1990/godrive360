@@ -9,7 +9,7 @@
  * metadata-driven class system features
  */
 Ext.Loader.addClassPathMappings({
-  "Contact": "app/view/pupils/Panel.js",
+  "Contact": "app/view/routes/Panel.js",
   "Ext": "touch/src",
   "Ext-more": "touch/src/core/Ext-more.js",
   "Ext.Boot": ".sencha/app/Boot.js",
@@ -679,10 +679,13 @@ Ext.ClassManager.addNameAlternateMappings({
   "app.view.Main": [],
   "app.view.common.ImageButton": [],
   "app.view.course.Panel": [],
-  "app.view.course.recorderView": [],
+  "app.view.course.markErrorFormPanel": [],
+  "app.view.course.saveCourseView": [],
   "app.view.options.AboutPanel": [],
   "app.view.options.MenuUsuario": [],
   "app.view.pupils.Panel": [],
+  "app.view.pupils.detailPupil": [],
+  "app.view.routes.Panel": [],
   "app.view.user.LoginPanel": [],
   "app.view.user.PanelOpciones": [],
   "app.view.user.PanelSuperior": [],
@@ -1433,9 +1436,13 @@ Ext.ClassManager.addNameAliasMappings({
     "course-panel",
     "widget.course-panel"
   ],
-  "app.view.course.recorderView": [
-    "recorder-view-panel",
-    "widget.recorder-view-panel"
+  "app.view.course.markErrorFormPanel": [
+    "markerror-form-panel",
+    "widget.markerror-form-panel"
+  ],
+  "app.view.course.saveCourseView": [
+    "save-course-panel",
+    "widget.save-course-panel"
   ],
   "app.view.options.AboutPanel": [
     "about-panel",
@@ -1448,6 +1455,14 @@ Ext.ClassManager.addNameAliasMappings({
   "app.view.pupils.Panel": [
     "pupils-panel",
     "widget.pupils-panel"
+  ],
+  "app.view.pupils.detailPupil": [
+    "detai-pupil-panel",
+    "widget.detai-pupil-panel"
+  ],
+  "app.view.routes.Panel": [
+    "routes-panel",
+    "widget.routes-panel"
   ],
   "app.view.user.LoginPanel": [
     "login-panel",

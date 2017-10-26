@@ -47,7 +47,8 @@ Ext.define("app.view.pupils.Panel", {
 	},
 	
 	getTpl : function(){
-		return '<div class="contact">{firstName} <strong>{lastName}</strong></div>';
+		return '<div class="pupil-item"><img src="resources/images/imagen_bg_usuario300.jpg" />' +
+				'<span>{firstName} {lastName}</span></div>';
 	},
 	
 	getData : function(){
@@ -55,11 +56,8 @@ Ext.define("app.view.pupils.Panel", {
 		return [
 		       { firstName: 'Raúl',    lastName: 'Martinez'},
 		       { firstName: 'Samuel',  lastName: 'Conran'  },
-		       { firstName: 'Daniel',  lastName: 'Kaneda'  },
-		       { firstName: 'Jacky',   lastName: 'Nguyen'  },
 		       { firstName: 'Abraham', lastName: 'Elias'   },
 		       { firstName: 'Josebas', lastName: 'Robinson'},
-		       { firstName: 'Nigel',   lastName: 'White'   },
 		       { firstName: 'Nico',    lastName: 'Ferrero' },
 		       { firstName: 'Jesús',   lastName: 'Rocha'}
 		   ];

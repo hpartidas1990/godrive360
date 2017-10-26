@@ -63,6 +63,13 @@ Ext.application({
 
         App.extFn().setAppName(App.name);
         App.extFn().setDefaultLocalModel(Config.LOCALDATA_MODEL_NAME);
+        
+        if(! App.extFn().getLocalData('saved_routes')){
+        	App.extFn().setLocalData({'saved_routes' : []});
+        }
+        if(! App.extFn().getLocalData('current_route_id')){
+        	App.extFn().setLocalData({'current_route_id' : 0});
+        }
 
         LoginIsReady = App.extFn().getLocalData('UserData');
         me.initialConnectionSettings(LoginIsReady);

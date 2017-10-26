@@ -11,8 +11,8 @@ Ext.define("app.view.course.markErrorFormPanel", {
 	
 	requires: [
           'Ext.Panel',
-          'Ext.Label',
-          'Ext.Button'
+          'Ext.Button',
+          'Ext.field.TextArea'
     ],
 
     config : {

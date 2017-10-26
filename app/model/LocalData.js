@@ -16,13 +16,16 @@ Ext.define('app.model.LocalData', {
     	identifier: 'uuid',
     	idProperty : 'uniqueid',
     	fields: [
-			{name: 'current_route_start_timestamp'},
+    		{name: 'current_route_id'},
 			{name: 'current_route'},
+			{name: 'current_route_start_timestamp'},
     	    {name: 'current_route_end_timestamp'},
+    	    {name: 'current_route_coords'},
     	    {name: 'current_route_errors'},
-    	    {name: 'Usuario'},
-    	    {name: 'lang'} // idioma
     	    
+    	    {name: 'usuario'},
+    	    {name: 'saved_routes'},
+    	    {name: 'lang'}
     	    
             //TODO Aquí puede agregar los campos para almacenar de forma local
         ],
